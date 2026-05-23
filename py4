@@ -1,0 +1,11 @@
+while True:
+    text = input("메모 입력(종료:q): ")
+
+    if text == "q":
+        break
+
+    file = open("memo.txt", "a", encoding="utf-8")
+    file.write(text + "\n")
+    file.close()
+
+print("저장 완료")
