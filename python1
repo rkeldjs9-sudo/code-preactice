@@ -1,0 +1,14 @@
+import random
+
+answer = random.randint(1, 100)
+
+while True:
+    num = int(input("숫자 입력: "))
+
+    if num > answer:
+        print("더 작음")
+    elif num < answer:
+        print("더 큼")
+    else:
+        print("정답!")
+        break
