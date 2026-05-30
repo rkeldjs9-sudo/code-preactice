@@ -1,0 +1,36 @@
+positive_words = [
+    "상승",
+    "호재",
+    "급등",
+    "성장",
+    "돌파"
+]
+
+negative_words = [
+    "하락",
+    "악재",
+    "폭락",
+    "위기",
+    "손실"
+]
+
+news = input("뉴스 제목 입력: ")
+
+score = 0
+
+for word in positive_words:
+    if word in news:
+        score += 1
+
+for word in negative_words:
+    if word in news:
+        score -= 1
+
+if score > 0:
+    print("긍정 뉴스")
+
+elif score < 0:
+    print("부정 뉴스")
+
+else:
+    print("중립 뉴스")
