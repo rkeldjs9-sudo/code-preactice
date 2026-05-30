@@ -1,0 +1,36 @@
+class Student:
+    def __init__(self, name, score):
+        self.name = name
+        self.score = score
+
+    def get_grade(self):
+        if self.score >= 90:
+            return "A"
+        elif self.score >= 80:
+            return "B"
+        elif self.score >= 70:
+            return "C"
+        else:
+            return "F"
+
+students = []
+
+while True:
+    print("\n1.학생추가 2.전체조회 3.종료")
+    menu = input()
+
+    if menu == "1":
+        name = input("이름: ")
+        score = int(input("점수: "))
+        students.append(Student(name, score))
+
+    elif menu == "2":
+        for s in students:
+            print(
+                f"이름:{s.name}, "
+                f"점수:{s.score}, "
+                f"등급:{s.get_grade()}"
+            )
+
+    elif menu == "3":
+        break
