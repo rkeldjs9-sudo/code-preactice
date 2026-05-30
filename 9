@@ -1,0 +1,20 @@
+import requests
+
+def get_price(coin):
+    url = (
+        "https://api.coingecko.com/api/v3/simple/price"
+        f"?ids={coin}&vs_currencies=usd"
+    )
+
+    data = requests.get(url).json()
+
+    return data[coin]["usd"]
+
+coin = input("코인 이름 입력: ")
+
+try:
+    price = get_price(coin)
+    print(f"{coin} 가격: ${price}")
+
+except:
+    print("조회 실패")
