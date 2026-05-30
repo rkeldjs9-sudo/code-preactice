@@ -1,0 +1,33 @@
+import json
+
+books = []
+
+def add_book():
+    title = input("책 제목: ")
+    author = input("저자: ")
+
+    books.append({
+        "title": title,
+        "author": author
+    })
+
+def show_books():
+    for i, book in enumerate(books, start=1):
+        print(f"{i}. {book['title']} - {book['author']}")
+
+def save_books():
+    with open("books.json", "w", encoding="utf-8") as f:
+        json.dump(books, f, ensure_ascii=False)
+
+while True:
+    print("\n1.추가 2.조회 3.저장 4.종료")
+    choice = input()
+
+    if choice == "1":
+        add_book()
+    elif choice == "2":
+        show_books()
+    elif choice == "3":
+        save_books()
+    elif choice == "4":
+        break
