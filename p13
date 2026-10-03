@@ -1,0 +1,25 @@
+import json, sys, os
+
+FILE = "todos.json"
+
+def load():
+    if not os.path.exists(FILE):
+        return []
+    with open(FILE, encoding="utf-8") as f:
+        return json.load(f)
+
+def save(todos):
+    with open(FILE, "w", encoding="utf-8") as f:
+        json.dump(todos, f, ensure_ascii=False, indent=2)
+
+todos = load()
+cmd = sys.argv[1] if len(sys.argv) > 1 else "list"
+
+if cmd == "add":
+    todos.append({"task": " ".join(sys.argv[2:]), "done": False})
+elif cmd == "done":
+    todos[int(sys.argv[2]) - 1]["done"] = True
+
+for i, t in enumerate(todos, 1):
+    print(f"{i}. [{'x' if t['done'] else ' '}] {t['task']}")
+save(todos)
