@@ -1,0 +1,15 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+plt.rcParams["font.family"] = "Malgun Gothic"  # 맥은 AppleGothic
+plt.rcParams["axes.unicode_minus"] = False
+
+df = pd.read_csv("data.csv", encoding="cp949")
+print(df.head())
+print(df.describe())
+
+monthly = df.groupby("월")["이용건수"].sum()
+monthly.plot(kind="bar", title="월별 이용건수")
+plt.tight_layout()
+plt.savefig("result.png")
+plt.show()
