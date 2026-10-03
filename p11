@@ -1,0 +1,24 @@
+import random, time
+
+def bubble_sort(arr):
+    a = arr[:]
+    for i in range(len(a)):
+        for j in range(len(a) - i - 1):
+            if a[j] > a[j + 1]:
+                a[j], a[j + 1] = a[j + 1], a[j]
+    return a
+
+def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[len(arr) // 2]
+    left = [x for x in arr if x < pivot]
+    mid = [x for x in arr if x == pivot]
+    right = [x for x in arr if x > pivot]
+    return quick_sort(left) + mid + quick_sort(right)
+
+data = [random.randint(0, 10000) for _ in range(2000)]
+for fn in (bubble_sort, quick_sort):
+    start = time.time()
+    fn(data)
+    print(f"{fn.__name__}: {time.time() - start:.4f}초")
